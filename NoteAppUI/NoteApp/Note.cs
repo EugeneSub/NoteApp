@@ -6,34 +6,79 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
+    /// <summary>
+    /// Класс записной книжки, содержащий поля для записей.
+    /// </summary>
     public class Note
     {
-        public string name { get; set; }
-        public string category { get; set; }
-        public string text { get; set; }
-        private DateTime created { get; set; }
-        private DateTime changed { get; set; }
+        /// <summary>
+        /// Класс, содержащий заголовок записной книжки.
+        /// </summary>
+        private string _name;
+        /// <summary>
+        /// Класс, содержащий категорию записной книжки.
+        /// </summary>
+        private TheCategory _theCategory;
+        /// <summary>
+        /// Класс, содержащий текст записной книжки.
+        /// </summary>
+        public string Text { get; set; }
+        /// <summary>
+        /// Класс, содержащий дату создания записной книжки.
+        /// </summary>
+        public DateTime Created { get; set; }
+        /// <summary>
+        /// Класс, содержащий дату изменения записной книжки.
+        /// </summary>
+        public DateTime Changed { get; set; }
+
+        /// <summary>
+        /// Конструктор класса Note.
+        /// </summary>
+        /// <param name="name"> Заголовок </param>
+        /// <param name="text"> Текст заметки </param>
+        /// <param name="thecategory"> Категория заметки </param>
+        /// <param name="created"> Дата создания заметки </param>
+        /// <param name="changed"> Дата изменения заметки </param>
+        public Note(string name, string text, TheCategory thecategory, DateTime created, DateTime changed)
+        {
+            Name = name;
+            _theCategory = thecategory;
+            Created = created;
+            Changed = changed;
+        }
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (value.Length < 50)
+                    _name = value;
+                else
+                    throw new ArgumentException();
+            }
+        }
+        public TheCategory theCategory
+        { 
+            get
+            {
+                return _theCategory;
+            }
+            set
+            {
+                _theCategory = value; 
+            }
+         }   
+
+            
+    
+
     }
 
-    enum NoteCategory
-    {
-        Work,
-        Home,
-        Health,
-        People,
-        Documents,
-        Phinances,
-        Misc
-    }
+    
 
-    public class Project
-    {
-
-    }
-
-    public class ProjectManager
-    {
-
-    }
 
 }

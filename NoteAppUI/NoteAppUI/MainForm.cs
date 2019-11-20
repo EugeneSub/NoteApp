@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoteApp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
+            var note = new Note("sdfsdf", "sdfsdf", TheCategory.Documents, DateTime.Now, DateTime.Now);
+            textBox1.Text = note.Text;
         }
     }
 }
