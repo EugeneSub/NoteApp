@@ -12,7 +12,7 @@ namespace NoteApp
     public class Project
     {
         /// <summary>
-        /// Список, в которомнаходится ключ и значение из полей Note
+        /// Список, в котором находится ключ и значение из полей Note
         /// </summary>
         public List<Note> dictionary = new List<Note>();
     }
