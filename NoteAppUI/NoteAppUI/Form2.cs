@@ -28,7 +28,11 @@ namespace NoteAppUI
                 _note = value;
                 if (_note != null)
                 {
-                    DatatextBox.Text = _note.Text;
+                    DatatextBox.Text = _note.Name;
+                    CategorycomboBox.SelectedItem = _note.theCategory;
+                    TexttextBox.Text = _note.Text;
+                    dateTimePicker1.Value = _note.Created;
+                    dateTimePicker2.Value = _note.Changed;
                 }
             }
         }
@@ -36,22 +40,29 @@ namespace NoteAppUI
         public AddForm()
         {
             InitializeComponent();
+            CategorycomboBox.Items.Add(TheCategory.Work);
+            CategorycomboBox.Items.Add(TheCategory.Home);
+            CategorycomboBox.Items.Add(TheCategory.Health);
+            CategorycomboBox.Items.Add(TheCategory.People);
+            CategorycomboBox.Items.Add(TheCategory.Documents);
+            CategorycomboBox.Items.Add(TheCategory.Phinances);
+            CategorycomboBox.Items.Add(TheCategory.Misc);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OKbutton_Click(object sender, EventArgs e)
         {
             
 
             if(_note == null)
             {
-                int value = TheCategory;
-                Note note = new Note(DatatextBox.Text , TexttextBox.Text, CategorycomboBox.SelectedIndex, DateTime.Now, DateTime.Now );
+                _note = new Note(DatatextBox.Text, TexttextBox.Text, (TheCategory)CategorycomboBox.SelectedIndex, DateTime.Now, DateTime.Now );
+                _note.Name = DatatextBox.Text;
+                _note.Text = TexttextBox.Text;
             }
                 else
             {
-                _note.Text = "Text is updated";
-
-                _note.Text = DatatextBox.Text;
+                _note.Text = TexttextBox.Text;
+                _note.Name = DatatextBox.Text;
                 _note.Changed = DateTime.Now;
             }
 
@@ -65,10 +76,15 @@ namespace NoteAppUI
 
         private void CategorycomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (CategorycomboBox.SelectedIndex == -1)
+            {
+                return;
+            }
+            TheCategory selectedCategory;
+            selectedCategory = (TheCategory)CategorycomboBox.SelectedItem; 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }

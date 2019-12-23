@@ -14,6 +14,6 @@ namespace NoteApp
         /// <summary>
         /// Список, в котором находится ключ и значение из полей Note
         /// </summary>
-        public List<Note> dictionary = new List<Note>();
+        public List<Note> Note1 = new List<Note>();
     }
 }
