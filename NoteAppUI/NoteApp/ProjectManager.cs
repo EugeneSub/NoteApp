@@ -15,7 +15,7 @@ namespace NoteApp
     /// </summary>
     public class ProjectManager
     {
-        public static void SaveToFile(Note note, string filename )
+        public static void SaveToFile(Project note, string filename )
         {
             //Экземпляр сериализатора.
             JsonSerializer serializer = new JsonSerializer();
@@ -27,10 +27,10 @@ namespace NoteApp
                 serializer.Serialize(writer, note);
             }
         }
-        public static Note LoadFromFile(string filename)
+        public static Project LoadFromFile(string filename)
         {
             //Переменная, в которую помещается результат десериализации.
-            Note note = null;
+            Project note = null;
             //Экземпляр сериализатора.
             JsonSerializer serializer = new JsonSerializer();
             //Открытие потока для чтения файла с указанием пути.
@@ -38,7 +38,8 @@ namespace NoteApp
             using (JsonReader reader = new JsonTextReader(sr))
             {
                 //Вызов десериализации и явно преобразуем результат в целевой тип данных.
-                note = serializer.Deserialize<Note>(reader);
+                note = serializer.Deserialize<Project>(reader);
+             
             }
             return note;
         }
