@@ -34,7 +34,7 @@ namespace NoteApp.UnitTests
         {
             var wrongName = "000000000000000000000000000000000000000000000000000";
             var note = new Note("", "", TheCategory.Documents, DateTime.Now, DateTime.Now);
-            Assert.Throws<ArgumentException>(() => { note.Name = wrongName; }, "-");
+            Assert.Throws<ArgumentException>(() => { note.Name = wrongName; }, "Присваивение более 50 значений!");
         }
 
         [Test(Description = "Позитивный тест сеттера Text")]
