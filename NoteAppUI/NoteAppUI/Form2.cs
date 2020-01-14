@@ -64,6 +64,7 @@ namespace NoteAppUI
                 _note.Text = TexttextBox.Text;
                 _note.Name = DatatextBox.Text;
                 _note.Changed = DateTime.Now;
+                _note.theCategory = (TheCategory)CategorycomboBox.SelectedItem;
             }
 
             this.Close();

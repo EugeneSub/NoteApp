@@ -32,6 +32,11 @@ namespace NoteApp
         /// </summary>
         public DateTime Changed { get; set; }
 
+        public Note()
+        {
+            
+        }
+
         /// <summary>
         /// Конструктор класса Note.
         /// </summary>

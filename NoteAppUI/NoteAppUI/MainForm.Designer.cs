@@ -38,7 +38,7 @@
             this.removeNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ShowCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -87,7 +87,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -104,21 +104,21 @@
             // addNoteToolStripMenuItem
             // 
             this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.addNoteToolStripMenuItem.Text = "Add Note";
             this.addNoteToolStripMenuItem.Click += new System.EventHandler(this.addNoteToolStripMenuItem_Click);
             // 
             // editNoteToolStripMenuItem
             // 
             this.editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
-            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.editNoteToolStripMenuItem.Text = "Edit Note";
             this.editNoteToolStripMenuItem.Click += new System.EventHandler(this.editNoteToolStripMenuItem_Click);
             // 
             // removeNoteToolStripMenuItem
             // 
             this.removeNoteToolStripMenuItem.Name = "removeNoteToolStripMenuItem";
-            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.removeNoteToolStripMenuItem.Text = "Remove Note";
             this.removeNoteToolStripMenuItem.Click += new System.EventHandler(this.removeNoteToolStripMenuItem_Click);
             // 
@@ -137,13 +137,15 @@
             this.abotToolStripMenuItem.Text = "About";
             this.abotToolStripMenuItem.Click += new System.EventHandler(this.abotToolStripMenuItem_Click);
             // 
-            // comboBox1
+            // ShowCategoryComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(125, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(215, 24);
-            this.comboBox1.TabIndex = 11;
+            this.ShowCategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ShowCategoryComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ShowCategoryComboBox.Location = new System.Drawing.Point(125, 42);
+            this.ShowCategoryComboBox.Name = "ShowCategoryComboBox";
+            this.ShowCategoryComboBox.Size = new System.Drawing.Size(215, 24);
+            this.ShowCategoryComboBox.TabIndex = 11;
+            this.ShowCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.ShowCategoryComboBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -266,7 +268,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.NoteTextBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.ShowCategoryComboBox);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.AddButton);
@@ -293,7 +295,7 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNoteToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox ShowCategoryComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox NoteTextBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;

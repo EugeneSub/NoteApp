@@ -17,6 +17,7 @@ namespace NoteApp
         People,
         Documents,
         Phinances,
-        Misc
+        Misc,
+        All
     }
 }
