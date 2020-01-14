@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddForm));
             this.DatatextBox = new System.Windows.Forms.TextBox();
             this.CategorycomboBox = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -51,6 +52,7 @@
             // 
             // CategorycomboBox
             // 
+            this.CategorycomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategorycomboBox.FormattingEnabled = true;
             this.CategorycomboBox.Location = new System.Drawing.Point(92, 36);
             this.CategorycomboBox.Name = "CategorycomboBox";
@@ -159,6 +161,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.CategorycomboBox);
             this.Controls.Add(this.DatatextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddForm";
             this.Text = "Form2";
             this.ResumeLayout(false);
