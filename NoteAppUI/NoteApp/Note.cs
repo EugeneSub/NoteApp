@@ -48,6 +48,7 @@ namespace NoteApp
         public Note(string name, string text, TheCategory thecategory, DateTime created, DateTime changed)
         {
             Name = name;
+            Text = text;
             _theCategory = thecategory;
             Created = created;
             Changed = changed;

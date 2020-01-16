@@ -205,5 +205,10 @@ namespace NoteAppUI
             NotesListBox.Items.AddRange(titles.ToArray());
 
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -16,44 +16,41 @@ namespace NoteApp.UnitTests
     class ProjectManagerTest
     {
         [Test(Description = "Тест сериализации")]
-        public void SaveToFile()
+        public void SaveToFileTest()
         {
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testfile = $@"{path}\test.json";
+            string actualfile = $@"{path}\test1.json";
             var test = new Project { Note1 = new List<Note>()};
 
-            test.Note1.Add(new Note("Name", "Text", TheCategory.Misc, new DateTime(2020, 01, 05), new DateTime(2020, 01, 05)));
+            test.Note1.Add(new Note("Name", "Text1", TheCategory.Misc, new DateTime(2020, 01, 14).Date, new DateTime(2020, 01, 14).Date));
+            test.Note1.Add(new Note("Name2", "Text2", TheCategory.Home, new DateTime(2020, 01, 14).Date, new DateTime(2020, 01, 14).Date));
+            test.Note1.Add(new Note("Name3", "Text3", TheCategory.Work, new DateTime(2020, 01, 14).Date, new DateTime(2020, 01, 14).Date));
 
-            test.Note1.Add(new Note("Name2", "Text2", TheCategory.Home, new DateTime(2020, 01, 05), new DateTime(2020, 01, 05)));
-
-            test.Note1.Add(new Note("Name3", "Text3", TheCategory.Work, new DateTime(2020, 01, 05), new DateTime(2020, 01, 05)));
-
-            ProjectManager.SaveToFile(test, @"test.json");
-
-            var expected = File.ReadAllText(@"test.json");
-
-            var actual = JsonConvert.SerializeObject(test);
-
-            Assert.AreEqual(actual, expected, "Сравнение сериализатора ProjectManager и встроенного");
+            string expected = File.ReadAllText(testfile);
+            ProjectManager.SaveToFile(test, actualfile);
+            string actual = File.ReadAllText(actualfile);
+            Assert.AreEqual(actual, expected, "Файлы не совпадают");
         }
 
         [Test(Description = "Тест десериализации")]
-        public void LoadFromFile()
+        public void LoadFromFileTest()
         {
-            var actual = new Project { Note1 = new List<Note>() };
+            var expected = new Project { Note1 = new List<Note>() };
 
-            actual.Note1.Add(new Note("Name", "Text", TheCategory.Misc, new DateTime(2020, 01, 05), new DateTime(2020, 01, 05)));
+            expected.Note1.Add(new Note("Name", "Text1", TheCategory.Misc, new DateTime(2020, 01, 14).Date, new DateTime(2020, 01, 14).Date));
+            expected.Note1.Add(new Note("Name2", "Text2", TheCategory.Home, new DateTime(2020, 01, 14).Date, new DateTime(2020, 01, 14).Date));
+            expected.Note1.Add(new Note("Name3", "Text3", TheCategory.Work, new DateTime(2020, 01, 14).Date, new DateTime(2020, 01, 14).Date));
+            
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string actualfile = $@"{path}\test.json";
 
-            actual.Note1.Add(new Note("Name2", "Text2", TheCategory.Home, new DateTime(2020, 01, 05), new DateTime(2020, 01, 05)));
-
-            actual.Note1.Add(new Note("Name3", "Text3", TheCategory.Work, new DateTime(2020, 01, 05), new DateTime(2020, 01, 05)));
-
-            var expected = ProjectManager.LoadFromFile(@"test.json");
-
-            var actualText = JsonConvert.SerializeObject(actual);
+            var actual = ProjectManager.LoadFromFile(actualfile);
 
             var expectedText = JsonConvert.SerializeObject(expected);
 
-            Assert.AreEqual(actualText, expectedText, "Сравнение результата десериализованного объекта и ожидаемого");
-
+            var actualText = JsonConvert.SerializeObject(actual);
+            Assert.AreEqual(actualText, expectedText, "Файлы не совпадают");
         }
     }
 }

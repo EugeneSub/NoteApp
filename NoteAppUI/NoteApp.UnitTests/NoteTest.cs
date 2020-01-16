@@ -40,8 +40,8 @@ namespace NoteApp.UnitTests
         [Test(Description = "Позитивный тест сеттера Text")]
         public void TitleTextSet_CorrectValue()
         {
-            var expected = "Заголовок_книжки";
-            var note = new Note("Заголовок_книжки", "Текст", TheCategory.Documents, DateTime.Now, DateTime.Now);
+            var expected = "Текст";
+            var note = new Note("", "Текст", TheCategory.Documents, DateTime.Now, DateTime.Now);
             note.Text = expected;
             Assert.AreEqual(expected, note.Text, "Сеттер Text устанавливает неправильное значение");
         }
@@ -50,10 +50,9 @@ namespace NoteApp.UnitTests
         public void NoteCategorySet_CorrectValue()
         {
             var expected = TheCategory.Misc;
-            var note = new Note("Заголовок_книжки", "Текст", TheCategory.Documents, DateTime.Now, DateTime.Now);
-            note.theCategory = TheCategory.Work;
-            note.theCategory = expected;
-            Assert.AreEqual(expected, note.theCategory, "Сеттер TheCategory устанавливает неправильное значение");
+            var note = new Note("", "", TheCategory.Misc, DateTime.Now, DateTime.Now);
+            var actual = note.theCategory;
+            Assert.AreEqual(expected, actual, "Сеттер TheCategory устанавливает неправильное значение");
         }
 
 
