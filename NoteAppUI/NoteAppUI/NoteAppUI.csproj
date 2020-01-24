@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -118,7 +121,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy $(ProjectDir)$(OutDir)*.exe $(SolutionDir)InstallScripts\Release
+xcopy $(ProjectDir)$(OutDir)*.dll $(SolutionDir)InstallScripts\Release
+xcopy $(ProjectDir)$(OutDir)*.Notes $(SolutionDir)InstallScripts\Release
+"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" $(SolutionDir)InstallScripts\Script.iss</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>rd /s /q $(SolutionDir)InstallScripts\Release
+rd /s /q $(SolutionDir)InstallScripts\Installers
+md $(SolutionDir)InstallScripts\Release
+md $(SolutionDir)InstallScripts\Installers</PreBuildEvent>
   </PropertyGroup>
 </Project>

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Reflection;
 
 namespace NoteAppUI
 {
@@ -35,18 +35,20 @@ namespace NoteAppUI
             ShowCategoryComboBox.Items.Add(TheCategory.Misc);
             ShowCategoryComboBox.Items.Add(TheCategory.All);
             this.Text = "Главное окно программы";
-            this.Size = new Size(800, 450);
+            ShowCategoryComboBox.SelectedIndex = 7;
 
         }
 
         private void ProjectLoad()
         {
-            _project = ProjectManager.LoadFromFile(@"NoteApp.Notes");
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = $@"{path}\NoteApp.Notes";
+            _project = ProjectManager.LoadFromFile(file);
             if(_project == null)
             {
                 _project = new Project();
             }
-            var fileInf = new FileInfo(@"NoteApp.Notes");
+            var fileInf = new FileInfo(file);
             if (!fileInf.Exists)
                 fileInf.Create().Close();
             if (_project != null)
@@ -61,7 +63,9 @@ namespace NoteAppUI
 
         private void ProjectSave()
         {
-            ProjectManager.SaveToFile(_project, @"NoteApp.Notes");
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = $@"{path}\NoteApp.Notes";
+            ProjectManager.SaveToFile(_project, file);
         }
 
 
@@ -165,11 +169,11 @@ namespace NoteAppUI
             if (NotesListBox.SelectedIndex != -1)
             {
                 int selected = (NotesListBox.SelectedIndex);
-                Titlelabel.Text = _project.Note1[selected].Name;
-                Categorylabel.Text = _project.Note1[selected].theCategory.ToString();
-                NoteTextBox.Text = _project.Note1[selected].Text;
-                dateTimePicker1.Value = _project.Note1[selected].Created;
-                dateTimePicker2.Value = _project.Note1[selected].Changed;
+                Titlelabel.Text = _notes[selected].Name;
+                Categorylabel.Text = _notes[selected].theCategory.ToString();
+                NoteTextBox.Text = _notes[selected].Text;
+                dateTimePicker1.Value = _notes[selected].Created;
+                dateTimePicker2.Value = _notes[selected].Changed;
             }
         }
 
@@ -201,14 +205,38 @@ namespace NoteAppUI
         private void ShowCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             NotesListBox.Items.Clear();
-            var titles = _project.SortedList((TheCategory)ShowCategoryComboBox.SelectedItem);
-            NotesListBox.Items.AddRange(titles.ToArray());
-
+            _notes.Clear();
+            _notes = _project.SortedList((TheCategory)ShowCategoryComboBox.SelectedIndex);
+            foreach (var note in _notes)
+            {
+                NotesListBox.Items.Add(note.Name);
+            }
         }
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (NotesListBox.SelectedIndex != -1)
+                {
+                    DialogResult result = MessageBox.Show("Удалить заметку?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    if (result == DialogResult.Yes)
+                    RemoveNote();
+                }
+            }
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
+    
+

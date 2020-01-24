@@ -56,13 +56,17 @@
             // 
             // NotesListBox
             // 
+            this.NotesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.NotesListBox.FormattingEnabled = true;
             this.NotesListBox.ItemHeight = 16;
             this.NotesListBox.Location = new System.Drawing.Point(12, 73);
+            this.NotesListBox.MinimumSize = new System.Drawing.Size(12, 16);
             this.NotesListBox.Name = "NotesListBox";
             this.NotesListBox.Size = new System.Drawing.Size(324, 388);
             this.NotesListBox.TabIndex = 6;
             this.NotesListBox.SelectedIndexChanged += new System.EventHandler(this.NotesListBox_SelectedIndexChanged);
+            this.NotesListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             // 
             // menuStrip1
             // 
@@ -88,7 +92,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -134,12 +138,14 @@
             // abotToolStripMenuItem
             // 
             this.abotToolStripMenuItem.Name = "abotToolStripMenuItem";
-            this.abotToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.abotToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.abotToolStripMenuItem.Text = "About";
             this.abotToolStripMenuItem.Click += new System.EventHandler(this.abotToolStripMenuItem_Click);
             // 
             // ShowCategoryComboBox
             // 
+            this.ShowCategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.ShowCategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ShowCategoryComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ShowCategoryComboBox.Location = new System.Drawing.Point(125, 42);
@@ -150,6 +156,8 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Name = "label1";
@@ -159,6 +167,9 @@
             // 
             // NoteTextBox
             // 
+            this.NoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NoteTextBox.Location = new System.Drawing.Point(346, 140);
             this.NoteTextBox.Multiline = true;
             this.NoteTextBox.Name = "NoteTextBox";
@@ -169,24 +180,37 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(434, 112);
+            this.dateTimePicker1.MaximumSize = new System.Drawing.Size(108, 22);
+            this.dateTimePicker1.MinimumSize = new System.Drawing.Size(108, 22);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(108, 22);
             this.dateTimePicker1.TabIndex = 14;
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker2.Enabled = false;
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker2.Location = new System.Drawing.Point(629, 112);
+            this.dateTimePicker2.MaximumSize = new System.Drawing.Size(108, 22);
+            this.dateTimePicker2.MinimumSize = new System.Drawing.Size(108, 22);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(108, 22);
             this.dateTimePicker2.TabIndex = 15;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(366, 112);
             this.label2.Name = "label2";
@@ -196,6 +220,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(558, 112);
             this.label3.Name = "label3";
@@ -205,6 +232,9 @@
             // 
             // Categorylabel
             // 
+            this.Categorylabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Categorylabel.AutoSize = true;
             this.Categorylabel.Location = new System.Drawing.Point(366, 84);
             this.Categorylabel.Name = "Categorylabel";
@@ -215,6 +245,8 @@
             // 
             // Titlelabel
             // 
+            this.Titlelabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.Titlelabel.AutoSize = true;
             this.Titlelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Titlelabel.Location = new System.Drawing.Point(364, 42);
@@ -226,6 +258,7 @@
             // 
             // EditButton
             // 
+            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EditButton.Image = global::NoteAppUI.Properties.Resources.icons8_редактировать_16;
             this.EditButton.Location = new System.Drawing.Point(76, 467);
             this.EditButton.Name = "EditButton";
@@ -236,6 +269,7 @@
             // 
             // RemoveButton
             // 
+            this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RemoveButton.Image = global::NoteAppUI.Properties.Resources.icons8_удалить_16;
             this.RemoveButton.Location = new System.Drawing.Point(136, 467);
             this.RemoveButton.Name = "RemoveButton";
@@ -246,6 +280,7 @@
             // 
             // AddButton
             // 
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddButton.BackColor = System.Drawing.SystemColors.MenuBar;
             this.AddButton.Image = global::NoteAppUI.Properties.Resources.icons8_создать_новый_16;
             this.AddButton.Location = new System.Drawing.Point(16, 467);
@@ -280,6 +315,8 @@
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

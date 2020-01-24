@@ -18,36 +18,30 @@ namespace NoteApp
 
         public List<Note> SortedList()
         {
-            var sortedList = Note1.OrderByDescending(note => note.Changed).ToList();
+            var sortedList = Note1.OrderBy(note => note.Changed).ToList();
             return sortedList;
         }
 
-        public List<string> SortedList(TheCategory thecategory)
+        public List<Note> SortedList(TheCategory thecategory)
         {
-            Note1 = Note1.OrderByDescending(note => note.Changed).ToList();
+            Note1 = Note1.OrderBy(note => note.Changed).ToList();
 
-            var titles = new List<string>();
+            var titles = new List<Note>();
             foreach (var note in Note1)
             {
                 if (thecategory == TheCategory.All)
                 {
-                    titles.Add(note.Name);
+                    titles.Add(note);
                 }
                 else if(note.theCategory == thecategory)
-                {
-                    titles.Add(" > " + note.Name);
-                }
-                else
-                {
-                    titles.Add(note.Name);
+                { 
+                    titles.Add(note);
                 }
             }
             return titles;
-            //var sortedList2 = Note1.OrderBy(note => note.theCategory).ToList();
+
+            //var sortedList2 = Note1.OrderByDescending(note => note.Changed).ToList();
             //return sortedList2;
         }
-
-
-
     }
 }
