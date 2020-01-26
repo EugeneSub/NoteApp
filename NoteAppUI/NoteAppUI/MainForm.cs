@@ -41,8 +41,12 @@ namespace NoteAppUI
 
         private void ProjectLoad()
         {
-            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string file = $@"{path}\NoteApp.Notes";
+            if (!File.Exists(file))
+            {
+                ProjectSave();
+            }
             _project = ProjectManager.LoadFromFile(file);
             if(_project == null)
             {
@@ -63,7 +67,7 @@ namespace NoteAppUI
 
         private void ProjectSave()
         {
-            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string file = $@"{path}\NoteApp.Notes";
             ProjectManager.SaveToFile(_project, file);
         }

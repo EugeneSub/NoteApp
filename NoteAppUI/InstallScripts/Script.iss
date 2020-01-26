@@ -18,6 +18,6 @@ OutputDir=C:\Users\Михаил\source\repos\NoteApp\NoteAppUI\InstallScripts\Installe
 Source: "C:\Users\Михаил\source\repos\NoteApp\NoteAppUI\InstallScripts\Release\NoteAppUI.exe"; DestDir: "{app}"
 Source: "C:\Users\Михаил\source\repos\NoteApp\NoteAppUI\InstallScripts\Release\Newtonsoft.Json.dll"; DestDir: "{app}"
 Source: "C:\Users\Михаил\source\repos\NoteApp\NoteAppUI\InstallScripts\Release\NoteApp.dll"; DestDir: "{app}"
-Source: "C:\Users\Михаил\source\repos\NoteApp\NoteAppUI\InstallScripts\Release\NoteApp.Notes"; DestDir: "{app}"
+
 [Icons]
 Name: "{group}\My Program"; Filename: "{app}\NoteApp.exe"
