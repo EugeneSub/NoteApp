@@ -12,7 +12,7 @@ namespace NoteApp
     public class Project
     {
         /// <summary>
-        /// Список, в котором находится ключ и значение из полей Note
+        /// Список, в котором находится и значение из полей Note
         /// </summary>
         public List<Note> Note1 = new List<Note>();
 

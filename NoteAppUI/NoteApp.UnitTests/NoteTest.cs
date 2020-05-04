@@ -33,7 +33,7 @@ namespace NoteApp.UnitTests
         public void NoteNameSet_InCorrectValue()
         {
             var wrongName = "000000000000000000000000000000000000000000000000000";
-            var note = new Note("", "", TheCategory.Documents, DateTime.Now, DateTime.Now);
+            var note = new Note("0000000000000000000000000000000000000000000000000", "", TheCategory.Documents, DateTime.Now, DateTime.Now);
             Assert.Throws<ArgumentException>(() => { note.Name = wrongName; }, "Присваивение более 50 значений!");
         }
 

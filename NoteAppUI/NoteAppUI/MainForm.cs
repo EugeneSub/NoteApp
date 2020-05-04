@@ -38,7 +38,9 @@ namespace NoteAppUI
             ShowCategoryComboBox.SelectedIndex = 7;
 
         }
-
+        /// <summary>
+        /// Функция загрузки заметок
+        /// </summary>
         private void ProjectLoad()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -52,9 +54,6 @@ namespace NoteAppUI
             {
                 _project = new Project();
             }
-            var fileInf = new FileInfo(file);
-            if (!fileInf.Exists)
-                fileInf.Create().Close();
             if (_project != null)
             {
                 _project.Note1 = _project.SortedList();
@@ -64,7 +63,9 @@ namespace NoteAppUI
                 NotesListBox.Items.AddRange(titles.ToArray());
             }
         }
-
+        /// <summary>
+        /// Функция сохранения заметок
+        /// </summary>
         private void ProjectSave()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -94,7 +95,9 @@ namespace NoteAppUI
         {
             AddNote();
         }
-
+        /// <summary>
+        /// Функция добавления заметки
+        /// </summary>
         private void AddNote()
         {
             AddForm Add = new AddForm();
@@ -106,10 +109,13 @@ namespace NoteAppUI
                 var time = updatedData.Changed.ToLongTimeString();
                 var title = updatedData.Name;
                 NotesListBox.Items.Add(title);
+                CategorySort();
                 ProjectSave();
             }
         }
-
+        /// <summary>
+        /// Функция редактирования заметки
+        /// </summary>
         private void EditNote()
         {
             //Получаем текущую выбранную дату
@@ -118,7 +124,7 @@ namespace NoteAppUI
             {
                 return;
             }
-            var selectedData = _project.Note1[selectedIndex];
+            var selectedData = _notes[selectedIndex];
             var inner = new AddForm(); //Создаем форму       
 
             inner.Data = selectedData;  //Передаем форме данные     
@@ -131,17 +137,20 @@ namespace NoteAppUI
                 //Осталось удалить старые данные по выбранному индексу
                 //и заменить их на обновленные
                 NotesListBox.Items.RemoveAt(selectedIndex);
-                _project.Note1.RemoveAt(selectedIndex);
+                _notes.RemoveAt(selectedIndex);
 
-                _project.Note1.Insert(selectedIndex, updatedData);
+                _notes.Insert(selectedIndex, updatedData);
                 var time = updatedData.Changed.ToLongTimeString();
                 var text = updatedData.Name;
                 NotesListBox.Items.Insert(selectedIndex, text);
+                CategorySort();
                 ProjectSave();
             }
 
         }
-
+        /// <summary>
+        /// Функция удаления заметки
+        /// </summary>
         private void RemoveNote()
         {
             var selectedIndex = NotesListBox.SelectedIndex;
@@ -149,8 +158,10 @@ namespace NoteAppUI
             {
                 return;
             }
+            var select = _notes[selectedIndex];
             NotesListBox.Items.RemoveAt(selectedIndex);
-            _project.Note1.RemoveAt(selectedIndex);
+            _project.Note1.Remove(select);
+            CategorySort();
             ProjectSave();
         }
 
@@ -208,6 +219,13 @@ namespace NoteAppUI
 
         private void ShowCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CategorySort();
+        }
+        /// <summary>
+        /// Функция фильтрации по категории
+        /// </summary>
+        public void CategorySort()
+        {
             NotesListBox.Items.Clear();
             _notes.Clear();
             _notes = _project.SortedList((TheCategory)ShowCategoryComboBox.SelectedIndex);
@@ -216,7 +234,6 @@ namespace NoteAppUI
                 NotesListBox.Items.Add(note.Name);
             }
         }
-
 
         private void MainForm_Load(object sender, EventArgs e)
         {
